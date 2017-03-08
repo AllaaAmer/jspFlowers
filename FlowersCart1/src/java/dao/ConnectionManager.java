@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import oracle.jdbc.driver.OracleDriver;
+import oracle.jdbc.OracleDriver;
 //import oracle.jdbc.
 /**
  *
@@ -27,6 +27,11 @@ public class ConnectionManager {
     }
     public Connection getConnection()
     {
+        try {
+            return DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jsp","jsp");
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
 }

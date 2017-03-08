@@ -6,7 +6,6 @@
 package dao;
 
 import Entities.Cart;
-import Entities.Client;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
  * @author Sheko
  */
 public class CartDao {
-
+///////////////////////////////////////start sherif
     public List<Cart> selectAll() {
         LinkedList<Cart> carts = new LinkedList<>();
         try (Connection con = new ConnectionManager().getConnection()) {
@@ -100,5 +99,15 @@ public class CartDao {
         }
         return false;
     }
+    ///////////////////////////////////////end Sherif
+    //////////////////////////////////////start allaa
     
+    ///////////////////////////////////////end allaa
+    //////////////////////////////////////start adel
+    
+    ///////////////////////////////////////end adel
+    //////////////////////////////////////start moamen
+    
+    
+    //////////////////////////////////////end moamen
 }

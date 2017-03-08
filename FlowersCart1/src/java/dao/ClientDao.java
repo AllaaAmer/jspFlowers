@@ -43,7 +43,7 @@ public class ClientDao {
     public boolean deleteClientByMail(Client client)
     {
         try (Connection con = new ConnectionManager().getConnection()) {
-             PreparedStatement ps=con.prepareStatement("delete from client where email=?");
+             PreparedStatement ps=con.prepareStatement("delete from client where mail=?");
              ps.setString(1,client.getMail());
              int num=ps.executeUpdate();
              if(num!=0)
@@ -68,6 +68,7 @@ public class ClientDao {
             ps.setInt(7, client.getCridetlimit());
             ps.setDate(8, new java.sql.Date(client.getBirthday().getTime()));
             ps.setString(9, client.getPhone());
+            ps.setInt(10, client.getId());
             int num = ps.executeUpdate();
             if (num != 0) {
                 return true;
@@ -79,8 +80,9 @@ public class ClientDao {
     }
 
     public boolean insertClient(Client client) {
-        try (Connection con = new ConnectionManager().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("insert into client(fname,lname,mail,password,job,address"
+        try {
+            Connection con = new ConnectionManager().getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into client(fname,lname,mail,password,job,address,"
                     + "cridetlimit,birthday,phone) values(?,?,?,?,?,?,?,?,?)");
             ps.setString(1, client.getFname());
             ps.setString(2, client.getLname());
@@ -112,7 +114,7 @@ public class ClientDao {
                 client.setFname(rs.getString("fname"));
                 client.setLname(rs.getString("lname"));
                 client.setPassword(rs.getString("password"));
-                client.setMail(rs.getString("email"));
+                client.setMail(rs.getString("mail"));
                 client.setJob(rs.getString("job"));
                 client.setAddress(rs.getString("address"));
                 client.setPhone(rs.getString("phone"));
@@ -131,7 +133,7 @@ public class ClientDao {
     public boolean validclient(Client client) {
 
         try (Connection con = new ConnectionManager().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from client where email=? and password=?");
+            PreparedStatement ps = con.prepareStatement("select * from client where mail=? and password=?");
             ps.setString(1, client.getMail());
             ps.setString(2, client.getPassword());
             ResultSet rs = ps.executeQuery();
@@ -148,7 +150,7 @@ public class ClientDao {
     public boolean existMail(Client client) {
 
         try (Connection con = new ConnectionManager().getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from client where email=? ");
+            PreparedStatement ps = con.prepareStatement("select * from client where mail=? ");
             ps.setString(1, client.getMail());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -171,7 +173,7 @@ public class ClientDao {
                 clientById.setFname(rs.getString("fname"));
                 clientById.setLname(rs.getString("lname"));
                 clientById.setPassword(rs.getString("password"));
-                clientById.setMail(rs.getString("email"));
+                clientById.setMail(rs.getString("mail"));
                 clientById.setJob(rs.getString("job"));
                 clientById.setAddress(rs.getString("address"));
                 clientById.setPhone(rs.getString("phone"));

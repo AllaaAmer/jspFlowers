@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import Facade.ClientService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -52,8 +53,8 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("inputEmail");
         String password = request.getParameter("inputPassword");
         // check against database
-        
-        if ( email.equals("allaa") && password.equals("123")){
+        ClientService clientService=new ClientService();
+        if (clientService.Login(email, password) ){
             HttpSession session = request.getSession(true);
             session.setAttribute("LoggedIn", new Boolean("true"));
             response.sendRedirect("index.jsp");

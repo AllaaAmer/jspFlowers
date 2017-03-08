@@ -35,11 +35,6 @@ public class Client implements Serializable {
 
     private String address;
 
-    private Orders order;
-
-    private List<Interests> interestsList;
-
-    private CartDetails cart;
 
     public int getId() {
         return id;
@@ -121,27 +116,5 @@ public class Client implements Serializable {
         this.address = address;
     }
 
-    public Orders getOrdersList() {
-        return order;
-    }
 
-    public void setOrdersList(Orders order) {
-        this.order = order;
-    }
-
-    public List<Interests> getInterestsList() {
-        return interestsList;
-    }
-
-    public void setInterestsList(List<Interests> interestsList) {
-        this.interestsList = interestsList;
-    }
-
-    public CartDetails getCartList() {
-        return cart;
-    }
-
-    public void setCartList(CartDetails cart) {
-        this.cart = cart;
-    }
 }

@@ -6,18 +6,23 @@
 package Entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
  * @author Adel Zaid
  */
-public class Interests implements Serializable {
+public class Interests  {
 
     private int id;
-    
-    private String name;
-    
+    private int flowerId;
+
+    public int getFlowerId() {
+        return flowerId;
+    }
+
+    public void setFlowerId(int flowerId) {
+        this.flowerId = flowerId;
+    }
     
 
     public Interests() {
@@ -33,14 +38,6 @@ public class Interests implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }
