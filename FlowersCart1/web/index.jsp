@@ -14,9 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <!-- Bootstrap styles -->
+
         <link href="assets/css/bootstrap.css" rel="stylesheet"/>
         <!-- Customize styles -->
         <link href="style.css" rel="stylesheet"/>
@@ -28,41 +26,42 @@
 
         <!-- header -->
         <%@include file="header.jsp" %>
+        <jsp:include  page="HomeServlet" />
 
         <!-- 
         Body Section 
         -->
-
-            <div class="span9">
+        <div class="row">
+            <div class="span12">
                 <div class="well np">
                     <div id="myCarousel" class="carousel slide homCar">
                         <div class="carousel-inner">
                             <div class="item">
-                                <img style="width:100%" src="assets/img/bootstrap_free-ecommerce.png" alt="bootstrap ecommerce templates">
+                                <img style="width:100%" src="assets/img/7.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>Bootstrap shopping cart</h4>
-                                    <p><span>Very clean simple to use</span></p>
+                                    <h4>“The earth laughs in flowers”</h4>
+                                    <p><span>― Ralph Waldo Emerson</span></p>
                                 </div>
                             </div>
                             <div class="item">
-                                <img style="width:100%" src="assets/img/carousel1.png" alt="bootstrap ecommerce templates">
+                                <img style="width:100%" src="assets/img/4.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>Bootstrap Ecommerce template</h4>
-                                    <p><span>Highly Google seo friendly</span></p>
+                                    <h4>“I must have flowers, always, and always.” </h4>
+                                    <p><span>― Claude Monet</span></p>
                                 </div>
                             </div>
                             <div class="item active">
-                                <img style="width:100%" src="assets/img/carousel3.png" alt="bootstrap ecommerce templates">
+                                <img style="width:100%" src="assets/img/5.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>Twitter Bootstrap cart</h4>
-                                    <p><span>Very easy to integrate and expand.</span></p>
+                                    <h4>“Butterflies are self propelled flowers.” </h4>
+                                    <p><span>― Robert A. Heinlein</span></p>
                                 </div>
                             </div>
                             <div class="item">
-                                <img style="width:100%" src="assets/img/bootstrap-templates.png" alt="bootstrap templates">
+                                <img style="width:100%" src="assets/img/6.jpg" alt="bootstrap templates">
                                 <div class="carousel-caption">
-                                    <h4>Bootstrap templates integration</h4>
-                                    <p><span>Compitable to many more opensource cart</span></p>
+                                    <h4>Earth laughs in flowers.  </h4>
+                                    <p><span>― Ralph Waldo Emerson</span></p>
                                 </div>
                             </div>
                         </div>
@@ -70,6 +69,74 @@
                         <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
                     </div>
                 </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div id="sidebar" class="span3">
+                <div class="well well-small">
+                    <ul class="nav nav-list">
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+                        <li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
+                        <li style="border:0"> &nbsp;</li>
+                        <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+                    </ul>
+                </div>
+
+                <div class="well well-small alert alert-warning cntr">
+                    <h2>50% Discount</h2>
+                    <p> 
+                        only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+                    </p>
+                </div>
+                <div class="well well-small" ><a href="#"><img src="assets/img/paypal.jpg" alt="payment method paypal"></a></div>
+
+                <a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+                <br>
+                <br>
+                <ul class="nav nav-list promowrapper">
+                    <li>
+                        <div class="thumbnail">
+                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                            <img src="assets/img/bootstrap-ecommerce-templates.png" alt="bootstrap ecommerce templates">
+                            <div class="caption">
+                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="border:0"> &nbsp;</li>
+                    <li>
+                        <div class="thumbnail">
+                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                            <img src="assets/img/shopping-cart-template.png" alt="shopping cart template">
+                            <div class="caption">
+                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="border:0"> &nbsp;</li>
+                    <li>
+                        <div class="thumbnail">
+                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                            <img src="assets/img/bootstrap-template.png" alt="bootstrap template">
+                            <div class="caption">
+                                <h4><a class="defaultBtn" href="product_details.html">VIEW</a> <span class="pull-right">$22.00</span></h4>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="span9">
+
                 <!--
                 New Products
                 -->
