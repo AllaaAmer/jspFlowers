@@ -14,7 +14,7 @@
                         <a href="#"><span class="icon-youtube"></span></a>
                         <a href="#"><span class="icon-tumblr"></span></a>
                     </div>
-                    <a href="index.jsp"> <span class="icon-home"></span> Home <c:out value="${session.LoggedIn}" /></a> 
+                    <a href="index.jsp"> <span class="icon-home"></span> Home </a> 
                     <a href="#"><span class="icon-user"></span> My Account</a> 
                     <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
 
@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="span4">
                     <h1>
-                        <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span> 
+                        <a class="logo" href="index.html">
                             <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
                         </a>
                     </h1>
@@ -90,8 +90,8 @@
     <c:if test="${!sessionScope.LoggedIn}">
 
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="topNav">
-                <div class="container">
+            <div class="topNav" style="background-color: white;">
+                <div class="container" >
                     <div class="alignR">
                         <div class="pull-left socialNw">
                             <a href="#"><span class="icon-twitter"></span></a>
@@ -116,10 +116,10 @@
             <div id="gototop"> </div>
             <header id="header">
                 <div class="row">
-                    <div class="span4">
+                    <div class="span6">
                         <h1>
-                            <a class="logo" href="index.html"><span>Twitter Bootstrap ecommerce template</span> 
-                                <img src="assets/img/logo-bootstrap-shoping-cart.png" alt="bootstrap sexy shop">
+                            <a class="logo" href="index.jsp">
+                                <img src="assets/img/logo-bootstrap-shoping-cart.png" width="200px" height="10px">
                             </a>
                         </h1>
                     </div>
