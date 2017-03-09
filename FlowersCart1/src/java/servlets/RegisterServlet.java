@@ -20,8 +20,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.entities.Client;
-import model.entities.Interests;
+import Entities.Client;
+import Entities.Interests;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**

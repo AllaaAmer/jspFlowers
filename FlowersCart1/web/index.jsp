@@ -22,7 +22,11 @@
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
     </head>
-    <body>
+    <body 
+        style="background-image: url(assets/img/bg1.jpg); 
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;">
 
         <!-- header -->
         <%@include file="header.jsp" %>
@@ -33,35 +37,35 @@
         -->
         <div class="row">
             <div class="span12">
-                <div class="well np">
-                    <div id="myCarousel" class="carousel slide homCar">
-                        <div class="carousel-inner">
-                            <div class="item">
-                                <img style="width:100%" src="assets/img/7.jpg" alt="bootstrap ecommerce templates">
+                <div class="well np" style="border-radius: 30px;border-color: transparent;">
+                    <div id="myCarousel" class="carousel slide homCar"  style="border-radius: 30px;border-color: transparent;">
+                        <div class="carousel-inner"  >
+                            <div class="item" >
+                                <img style="width:100%;" src="assets/img/7.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>“The earth laughs in flowers”</h4>
+                                    <h4>“The earth laughs in flowers”</h4><br/><br/><br/><br/>
                                     <p><span>― Ralph Waldo Emerson</span></p>
                                 </div>
                             </div>
                             <div class="item">
                                 <img style="width:100%" src="assets/img/4.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>“I must have flowers, always, and always.” </h4>
+                                    <h4>“I must have flowers, always, and always.” </h4><br/><br/><br/><br/>
                                     <p><span>― Claude Monet</span></p>
                                 </div>
                             </div>
-                            <div class="item active">
+                            <div class="item active" >
                                 <img style="width:100%" src="assets/img/5.jpg" alt="bootstrap ecommerce templates">
                                 <div class="carousel-caption">
-                                    <h4>“Butterflies are self propelled flowers.” </h4>
+                                    <h4>“Butterflies are self propelled flowers.” </h4><br/>
                                     <p><span>― Robert A. Heinlein</span></p>
                                 </div>
                             </div>
-                            <div class="item">
-                                <img style="width:100%" src="assets/img/6.jpg" alt="bootstrap templates">
+                            <div class="item" >
+                                <img style="width:100%;border-radius: 30px;" src="assets/img/6.jpg" alt="bootstrap templates">
                                 <div class="carousel-caption">
-                                    <h4>Earth laughs in flowers.  </h4>
-                                    <p><span>― Ralph Waldo Emerson</span></p>
+                                    <h4>“Every flower is a soul blossoming in nature.”  </h4><br/>
+                                    <p><span>― Gérard de Nerval</span></p>
                                 </div>
                             </div>
                         </div>
@@ -76,15 +80,19 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-                        <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+                        <c:forEach items="${requestScope.categories}" var="category">
+                            
+                            <li><a href="products.html"><span class="icon-chevron-right"></span><c:out value="${category.name}"></c:out></a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Watches</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
+                            <li><a href="products.html"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+                            
+                        </c:forEach>
                         <li><a href="products.html"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
                         <li style="border:0"> &nbsp;</li>
                         <li> <a class="totalInCart" href="cart.html"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
