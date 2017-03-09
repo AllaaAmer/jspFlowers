@@ -34,17 +34,17 @@ public class HomeServlet extends HttpServlet {
         ArrayList<Category> categories = new ArrayList<>();
         ArrayList<Flower> flowers = new ArrayList<>();
         ArrayList<Product> products = new ArrayList<>();
-        
+
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(true);
         Boolean userLogged = (Boolean) session.getAttribute("LoggedIn");
-        if(userLogged!=null&&userLogged.booleanValue()){
-             categories = service.getCategories();
-             flowers = service.getFlowers();
-             products = service.getProducts();
-             request.setAttribute("categories", categories);
-             request.setAttribute("flowers", flowers);
-             request.setAttribute("products", products);
+        if (userLogged != null && userLogged.booleanValue()) {
+            categories = service.getCategories();
+            flowers = service.getFlowers();
+            products = service.getProducts();
+            request.setAttribute("categories", categories);
+            request.setAttribute("flowers", flowers);
+            request.setAttribute("products", products);
         }
         System.out.println("no");
     }
