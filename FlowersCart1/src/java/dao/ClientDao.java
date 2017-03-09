@@ -11,6 +11,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -66,7 +69,8 @@ public class ClientDao {
             ps.setString(5, client.getJob());
             ps.setString(6, client.getAddress());
             ps.setInt(7, client.getCridetlimit());
-            ps.setDate(8, new java.sql.Date(client.getBirthday().getTime()));
+            Date date=new  SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
+            ps.setDate(8, new java.sql.Date(date.getTime()));
             ps.setString(9, client.getPhone());
             ps.setInt(10, client.getId());
             int num = ps.executeUpdate();
@@ -74,6 +78,8 @@ public class ClientDao {
                 return true;
             }
         } catch (SQLException ex) {
+            Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
@@ -91,13 +97,16 @@ public class ClientDao {
             ps.setString(5, client.getJob());
             ps.setString(6, client.getAddress());
             ps.setInt(7, client.getCridetlimit());
-            ps.setDate(8, new java.sql.Date(client.getBirthday().getTime()));
+            Date date=new  SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
+            ps.setDate(8, new java.sql.Date(date.getTime()));
             ps.setString(9, client.getPhone());
             int num = ps.executeUpdate();
             if (num != 0) {
                 return true;
             }
         } catch (SQLException ex) {
+            Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
@@ -119,7 +128,7 @@ public class ClientDao {
                 client.setAddress(rs.getString("address"));
                 client.setPhone(rs.getString("phone"));
                 client.setCridetlimit(rs.getInt("cridetlimit"));
-                client.setBirthday(rs.getDate("birthday"));
+                client.setBirthday(rs.getDate("birthday").toString());
                 client.setId(rs.getInt("id"));
                 clients.add(client);
             }
@@ -178,7 +187,7 @@ public class ClientDao {
                 clientById.setAddress(rs.getString("address"));
                 clientById.setPhone(rs.getString("phone"));
                 clientById.setCridetlimit(rs.getInt("cridetlimit"));
-                clientById.setBirthday(rs.getDate("birthday"));
+                clientById.setBirthday(rs.getDate("birthday").toString());
                 clientById.setId(rs.getInt("id"));
                 return clientById;
             }

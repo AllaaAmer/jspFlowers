@@ -13,13 +13,21 @@ import dao.ClientDao;
  * @author Sheko
  */
 public class ClientService {
-    
-    public boolean Login(String email,String password)
-    {
-        Client client=new Client();
+
+    public boolean Login(String email, String password) {
+        Client client = new Client();
         client.setMail(email);
         client.setPassword(password);
-        ClientDao clientDao=new ClientDao();
+        ClientDao clientDao = new ClientDao();
         return clientDao.validclient(client);
+    }
+
+    public boolean signUp(Client client) {
+
+        ClientDao clientDao = new ClientDao();
+        if (!clientDao.existMail(client)) {
+            return clientDao.insertClient(client);
+        }
+        return false;
     }
 }
