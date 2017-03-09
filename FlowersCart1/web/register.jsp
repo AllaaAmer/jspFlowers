@@ -76,7 +76,7 @@
                     <div class="control-group">
                         <label class="control-label" for="birthday">Date of Birth <sup>*</sup></label>
                         <div class="controls">
-                            <input type="date"  name="birthday" max="1980-12-31" min="2017-01-02" required/>
+                            <input type="date"  name="birthday" min="1980-12-31" max="2017-01-02" required/>
                         </div>
                     </div>
                 </div>
