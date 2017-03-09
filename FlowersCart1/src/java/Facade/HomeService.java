@@ -6,11 +6,8 @@
 package Facade;
 
 import Entities.Category;
-import Entities.Flower;
 import Entities.Product;
 import dao.CategoryDao;
-import dao.FlowerDao;
-import dao.ProductDoa;
 import java.util.ArrayList;
 
 /**
@@ -24,15 +21,15 @@ public class HomeService {
         return new ArrayList<Category>(cDao.selectAll());
     }
     
-     public ArrayList<Product> getProducts(){
-        ProductDoa pDao = new ProductDoa();
-        return pDao.selectAllProducts();
-    }
-     
-      public ArrayList<Flower> getFlowers(){
-        FlowerDao fDao = new FlowerDao();
-        return fDao.selectAllFlowers();
-    }
+//     public ArrayList<Product> getProducts(){
+//        ProductDoa pDao = new ();
+//        return new ArrayList<Category>(cDao.selectAll());
+//    }
+//     
+//      public ArrayList<Category> getFlowers(){
+//        CategoryDao cDao = new CategoryDao();
+//        return new ArrayList<Category>(cDao.selectAll());
+//    }
     
     
 }
