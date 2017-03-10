@@ -36,7 +36,7 @@
                         <tr>
                             <th>Product</th>
                             <th>Description</th>                                
-                            <th>Avail.</th>
+                            <th>Avail</th>
                             <th>Unit price</th>
                             <th>Quantity </th>
                             <th>Total</th>

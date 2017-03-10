@@ -9,6 +9,7 @@ import Entities.Category;
 import Entities.Flower;
 import Entities.Product;
 import Facade.HomeService;
+import dto.CartProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,10 +27,13 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "HomeServlet", urlPatterns = {"/HomeServlet"})
 public class HomeServlet extends HttpServlet {
 
+    //sherif 
+    // added cartproducts object to session which represent list of products in client cart
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //start alaa
         HomeService service = new HomeService();
         ArrayList<Category> categories = new ArrayList<>();
         ArrayList<Flower> flowers = new ArrayList<>();
@@ -47,6 +51,19 @@ public class HomeServlet extends HttpServlet {
             request.setAttribute("products", products);
         }
         System.out.println("no");
+//end alaa
+//start sherif
+        sessionInit(request);
+// end sherif
+    }
+
+    private  void sessionInit(HttpServletRequest request) {
+        HttpSession session = request.getSession(true);
+        
+        if (session.getAttribute("userCart") == null) {
+            session.setAttribute("userCart", new CartProducts());
+            System.out.println("new user");
+        }
     }
 
     @Override
