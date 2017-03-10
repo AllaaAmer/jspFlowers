@@ -20,16 +20,17 @@
         <!-- Customize styles -->
         <link href="style.css" rel="stylesheet"/>
         <!-- font awesome styles -->
+
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
-        
-       
+        <script src="cartPage.js" type="text/javascript"></script>
+
     </head>
-    
-    <body>
+
+    <body onload="calctotalprice()">
         <%@include file="header.jsp" %>
         <jsp:include  page="CartServlet" />
-        
+
         <!--
         Body Section 
         -->
@@ -55,48 +56,21 @@
                             <tr>
                                 <td><img width="100" src="assets/img/e.jpg" alt=""></td>
                                 <td> Name:<c:out value="${product.name}"/><br>
-                                Description:<c:out value="${product.description}"/></td>
+                                    Description:<c:out value="${product.description}"/></td>
                                 <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                                <td><c:out value="${product.price}"/></td>
+                                <td><div id="price${product.id}"> <c:out value="${product.price}"/></td>
                                 <td>
                                     <div class="input-append">
-                                        <form><input class="btn btn-mini" type="number"style="max-width:34px"  name="quantity" value="1" min="1" max="${product.quantity}" onchange="alert(4)" ></form><form action="RemoveCartProductServlet" method="post"><input type="hidden" name="id" value="${product.id}"><button class="btn btn-mini btn-danger" type="submit" ><span class="icon-remove"></span></button></form>
+                                        <form><input class="btn btn-mini" type="number"style="max-width:34px"  name="quantity" value="1" min="1" max="${product.quantity}" onchange="calcProductPrice(${product.id}, this)" ></form><form action="RemoveCartProductServlet" method="post"><input type="hidden" name="id" value="${product.id}"><button class="btn btn-mini btn-danger" type="submit" ><span class="icon-remove"></span></button></form>
                                     </div>
                                 </td>
-                                <td>$100.00</td>
+                                <!--<td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice"><c:out value="${product.price}"/></div></td>-->
+                                <td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice">20</div></td>
                             </tr>
                         </c:forEach>
                         <tr>
-                            <td><img width="100" src="assets/img/e.jpg" alt=""></td>
-                            <td>Items name here<br>Carate : 22<br>Model : n/a</td>
-
-                            <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                            <td>$50.00</td>
-                            <td>
-                                <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2">
-                                <div class="input-append">
-                                    <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                                </div>
-                            </td>
-                            <td>$100.00</td>
-                        </tr>
-                        <tr>
-                            <td><img width="100" src="assets/img/f.jpg" alt=""></td>
-                            <td>Item names and brief details<br>Carate:24 <br>Model:HBK24</td>
-                            <!--<td> - </td>-->
-                            <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                            <td>$348.42</td>
-                            <td>
-                                <input class="span1" style="max-width:34px" placeholder="1" size="16" type="text">
-                                <div class="input-append">
-                                    <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button">+</button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                                </div>
-                            </td>
-                            <td>$348.42</td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="alignR">Total products:	</td>
-                            <td class="label label-primary"> $448.42</td>
+                            < <td colspan="6" class="alignR">Total products:<div id="totalPrice"> </di></td>
+                            <td class="label label-primary"></td>
                         </tr>
                     </tbody>
                 </table><br/>
@@ -145,8 +119,8 @@
                 <a href="login.html" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
             </div>
-            <!--</div>-->
         </div>
-        <%@include  file="footer.jsp" %>    
-    </body>
+    </div>
+    <%@include  file="footer.jsp" %>    
+</body>
 </html>
