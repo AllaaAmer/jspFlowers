@@ -11,24 +11,24 @@
     <title>Admin</title>
 
     <!-- Bootstrap -->
-    <link href="CSS/bootstrap/bootstrapCSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap/bootstrapCSS/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link href="CSS/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fontawesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="CSS/nprogress.css" rel="stylesheet">
+    <link href="../assets/css/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="CSS/pink.css" rel="stylesheet">
+    <link href="../assets/css/pink.css" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
-    <link href="CSS/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../assets/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="CSS/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../assets/css/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="CSS/daterangepicker.css" rel="stylesheet">
+    <link href="../assets/css/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="CSS/custom.min.css" rel="stylesheet">
+    <link href="../assets/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -45,7 +45,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="Images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../assets/img/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -118,7 +118,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="Images/img.jpg" alt="">John Doe
+                      <img src="../assets/img/img.jpg" alt="">Adel Zaid
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -506,42 +506,42 @@
     </div>
 
     <!-- jQuery -->
-    <script src="JS/jquery.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="JS/bootstrap.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="JS/fastclick.js"></script>
+    <script src="../assets/js/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="JS/nprogress.js"></script>
+    <script src="../assets/js/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="JS/Chart.min.js"></script>
+    <script src="../assets/js/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="JS/gauge.min.js"></script>
+    <script src="../assets/js/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="JS/bootstrap-progressbar.min.js"></script>
+    <script src="../assets/js/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="JS/icheck.min.js"></script>
+    <script src="../assets/js/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="JS/skycons.js"></script>
+    <script src="../assets/js/skycons.js"></script>
     <!-- Flot -->
-    <script src="JS/jquery.flot.js"></script>
-    <script src="JS/jquery.flot.pie.js"></script>
-    <script src="JS/jquery.flot.time.js"></script>
-    <script src="JS/jquery.flot.stack.js"></script>
-    <script src="JS/jquery.flot.resize.js"></script>
+    <script src="../assets/js/jquery.flot.js"></script>
+    <script src="../assets/js/jquery.flot.pie.js"></script>
+    <script src="../assets/js/jquery.flot.time.js"></script>
+    <script src="../assets/js/jquery.flot.stack.js"></script>
+    <script src="../assets/js/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="JS/jquery.flot.orderBars.js"></script>
-    <script src="JS/jquery.flot.spline.min.js"></script>
-    <script src="JS/curvedLines.js"></script>
+    <script src="../assets/js/jquery.flot.orderBars.js"></script>
+    <script src="../assets/js/jquery.flot.spline.min.js"></script>
+    <script src="../assets/js/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="JS/date.js"></script>
+    <script src="../assets/js/date.js"></script>
    
     <!-- bootstrap-daterangepicker -->
-    <script src="JS/moment.min.js"></script>
-    <script src="JS/daterangepicker.js"></script>
+    <script src="../assets/js/moment.min.js"></script>
+    <script src="../assets/js/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="JS/custom.min.js"></script>
+    <script src="../assets/js/custom.min.js"></script>
 	
   </body>
 </html>
