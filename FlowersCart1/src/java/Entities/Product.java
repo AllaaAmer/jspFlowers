@@ -11,21 +11,22 @@ package Entities;
  */
 public class Product {
 
-    private int ID;
+    private int id;
     private String name;
     private Float price;
     private int quantity;
     private String description;
     private int rating;
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    
     public String getName() {
         return name;
     }

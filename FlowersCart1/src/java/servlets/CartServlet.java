@@ -5,6 +5,9 @@
  */
 package servlets;
 
+import Entities.Product;
+import Facade.CartService;
+import dto.CartProducts;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -22,8 +26,31 @@ public class CartServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        CartService cartService=new CartService(request.getSession(true));
+        CartProducts cartProducts = (CartProducts) request.getSession(true).getAttribute("userCart");
+        if (cartProducts == null) {
+            cartProducts = new CartProducts();
+            request.getSession(true).setAttribute("userCart", cartProducts);
+        }
         
-            
+        if (cartProducts.getProducts().isEmpty()) {
+            Product product = new Product();
+            product.setName("p1");
+            product.setPrice(20f);
+            product.setQuantity(50);
+            product.setDescription("asdasd");
+            product.setId(1);
+            cartService.addProduct(product);
+
+            product = new Product();
+            product.setName("p2");
+            product.setPrice(20f);
+            product.setQuantity(50);
+            product.setDescription("asdasd");
+            product.setId(2);
+            cartService.addProduct(product);
+        }
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

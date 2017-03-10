@@ -5,7 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -20,10 +22,15 @@
         <!-- font awesome styles -->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet">
         <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        
+       
     </head>
+    
     <body>
         <%@include file="header.jsp" %>
-        <!-- 
+        <jsp:include  page="CartServlet" />
+        
+        <!--
         Body Section 
         -->
         <div class="row">
@@ -42,7 +49,23 @@
                             <th>Total</th>
                         </tr>
                     </thead>
+
                     <tbody>
+                        <c:forEach items="${userCart.products}"  var="product">
+                            <tr>
+                                <td><img width="100" src="assets/img/e.jpg" alt=""></td>
+                                <td> Name:<c:out value="${product.name}"/><br>
+                                Description:<c:out value="${product.description}"/></td>
+                                <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
+                                <td><c:out value="${product.price}"/></td>
+                                <td>
+                                    <div class="input-append">
+                                        <form><input class="btn btn-mini" type="number"style="max-width:34px"  name="quantity" value="1" min="1" max="${product.quantity}" onchange="alert(4)" ></form><form action="RemoveCartProductServlet" method="post"><input type="hidden" name="id" value="${product.id}"><button class="btn btn-mini btn-danger" type="submit" ><span class="icon-remove"></span></button></form>
+                                    </div>
+                                </td>
+                                <td>$100.00</td>
+                            </tr>
+                        </c:forEach>
                         <tr>
                             <td><img width="100" src="assets/img/e.jpg" alt=""></td>
                             <td>Items name here<br>Carate : 22<br>Model : n/a</td>
