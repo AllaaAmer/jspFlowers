@@ -61,11 +61,11 @@
                                 <td><div id="price${product.id}"> <c:out value="${product.price}"/></td>
                                 <td>
                                     <div class="input-append">
-                                        <form><input class="btn btn-mini" type="number"style="max-width:34px"  name="quantity" value="1" min="1" max="${product.quantity}" onchange="calcProductPrice(${product.id}, this)" ></form><form action="RemoveCartProductServlet" method="post"><input type="hidden" name="id" value="${product.id}"><button class="btn btn-mini btn-danger" type="submit" ><span class="icon-remove"></span></button></form>
+                                        <form><input class="btn btn-mini" type="number"style="max-width:34px"  name="quantity" value="1" min="1" max="${product.quantity}" onchange="calcProductPrice(${product.id}, this)"  ></form><form action="RemoveCartProductServlet" method="post"><input type="hidden" name="id" value="${product.id}"><button class="btn btn-mini btn-danger" type="submit" ><span class="icon-remove"></span></button></form>
                                     </div>
                                 </td>
-                                <!--<td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice"><c:out value="${product.price}"/></div></td>-->
-                                <td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice">20</div></td>
+                                <td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice"><c:out value="${product.price}"/></div></td>
+                                <!--<td> <div id="ProducttotalPrice${product.id}" name="ProducttotalPrice">20</div></td>-->
                             </tr>
                         </c:forEach>
                         <tr>

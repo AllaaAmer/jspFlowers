@@ -4,10 +4,15 @@
  * and open the template in the editor.
  */
 
+
 function calcProductPrice(id,quantity)
 {
+    if(parseInt( quantity.value)<=parseInt( quantity.max))
+    {
    document.getElementById("ProducttotalPrice"+id).innerHTML=parseInt( document.getElementById("price"+id).innerHTML)*quantity.value;
     calctotalprice();
+    }
+    
 }
 function calctotalprice()
 {
