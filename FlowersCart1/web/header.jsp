@@ -64,11 +64,11 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                          <li class="active"><a href="index.jsp">Home	</a></li>
-                                <li class=""><a href="list-view.html">Flowers </a></li>
-                                <li class=""><a href="grid-view.html">Bouquets </a></li>
-                                <li class=""><a href="three-col.html">Categories</a></li>
-                                <li class=""><a href="four-col.html">Extras </a></li>
+                            <li class="active"><a href="index.jsp">Home	</a></li>
+                            <li class=""><a href="list-view.html">Flowers </a></li>
+                            <li class=""><a href="grid-view.html">Bouquets </a></li>
+                            <li class=""><a href="three-col.html">Categories</a></li>
+                            <li class=""><a href="four-col.html">Extras </a></li>
 
                         </ul>
                         <form action="#" class="navbar-search pull-left">
@@ -155,7 +155,7 @@
                                 <li class=""><a href="grid-view.html">Bouquets </a></li>
                                 <li class=""><a href="three-col.html">Categories</a></li>
                                 <li class=""><a href="four-col.html">Extras </a></li>
-                              
+
                             </ul>
                             <form action="#" class="navbar-search pull-left">
                                 <input type="text" placeholder="Search" class="search-query span2">
