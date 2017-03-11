@@ -9,6 +9,16 @@ public class Flower {
     private int ID;
     private String country;
     private String name;
+    
+    private ImageEntity image;
+
+    public ImageEntity getImage() {
+        return image;
+    }
+
+    public void setImage(ImageEntity image) {
+        this.image = image;
+    }
 
     public int getID() {
         return ID;

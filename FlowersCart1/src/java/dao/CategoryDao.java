@@ -20,6 +20,8 @@ import java.util.logging.Logger;
  * @author Sheko
  */
 public class CategoryDao {
+    
+    ProductDoa pDao = new ProductDoa();
 
     public List<Category> selectAll() {
         List<Category> categorys = new LinkedList<Category>();
@@ -31,6 +33,8 @@ public class CategoryDao {
                 category = new Category();
                 category.setId(rs.getInt("id"));
                 category.setName(rs.getString("name"));
+                category.setProductList(pDao.selectProductsByCategory(category.getId()));
+                
                 categorys.add(category);
             }
             return categorys;
