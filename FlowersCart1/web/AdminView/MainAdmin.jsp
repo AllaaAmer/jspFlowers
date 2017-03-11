@@ -63,7 +63,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-thumbs-o-up"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Add Product</a></li>
+                      <li><a href="ProductAddition.jsp">Add Product</a></li>
                       <li><a href="index2.html">Edit Product</a></li>
                       <li><a href="index3.html">Remove Product</a></li>
                     </ul>

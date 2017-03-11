@@ -13,7 +13,7 @@ public class Product {
 
     private int ID;
     private String name;
-    private Float price;
+    private float price;
     private int quantity;
     private String description;
     private int rating;
