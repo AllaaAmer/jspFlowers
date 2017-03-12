@@ -1,5 +1,13 @@
+<%-- 
+    Document   : ListClient
+    Created on : Mar 12, 2017, 7:58:16 PM
+    Author     : Moamenovic
+--%>
 <jsp:include page="../includes/header.jsp" />
+<jsp:useBean type="java.util.List<Entities.Client>" scope="application"  id="allClients">
+</jsp:useBean>
 
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- page content -->
 <div class="right_col">
@@ -24,11 +32,12 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>No.</th>
-                            <th>Flower Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Rating</th>
+                            <th>ID</th>
+                            <th>Full name</th>
+                            <th>Email</th>
+                            <th>Birthday</th>
+                            <th>Phone</th>
+                            <th>Credit</th>
                             <th>Edit</th>
                             <th>Remove</th>
                         </tr>
@@ -38,11 +47,15 @@
                     <tbody>
                         <tr>
                             <th><input type="checkbox" id="check-all" class="icheckbox_flat-green"></th>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
+                                <c:forEach var="oneClinet" items="${allClients}">
+                                <td> <c:out value="${oneClient.lname}"></c:out></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>   
+                                    <td></td>
+                                    <td></td>
+
+                            </c:forEach>
                             <td class=" last"><a class="btn btn-block" href="#">
                                     <i class="fa fa-pencil-square-o fa-lg"></i> Edit</a></td>
                             <td class=" last"><a class="btn btn-block" href="#">
@@ -178,4 +191,4 @@
 </div>
 <!-- /page content -->
 
-<jsp:include page="../includes/footer.jsp" />  
+<jsp:include page="../includes/footer.jsp" />

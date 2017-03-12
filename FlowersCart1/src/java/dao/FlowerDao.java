@@ -21,7 +21,7 @@ public class FlowerDao {
     ArrayList<Flower> flowertList;
     FlowerImageDao fiDao = new FlowerImageDao();
 
-    public boolean insertProduct(Flower flower) {
+    public boolean insertFlower(Flower flower) {
         try (Connection con = new ConnectionManager().getConnection()) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO FLOWERS (NAME, COUNTRY) VALUES (?, ?)");
             ps.setString(1, flower.getName());
@@ -37,7 +37,7 @@ public class FlowerDao {
         }
     }
 
-    public boolean updateFlower(Flower flower)  {
+    public boolean updateFlower(Flower flower) {
         try (Connection con = new ConnectionManager().getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE FLOWERS SET NAME = ? , COUNTRY = ?  WHERE  id = ?");
             ps.setString(1, flower.getName());
@@ -53,7 +53,7 @@ public class FlowerDao {
         }
     }
 
-    public ArrayList<Flower> selectAllFlowers()  {
+    public ArrayList<Flower> selectAllFlowers() {
         flowertList = new ArrayList<>();
         try (Connection con = new ConnectionManager().getConnection()) {
             PreparedStatement ps = con.prepareStatement("select * from FLOWERS");
@@ -110,9 +110,9 @@ public class FlowerDao {
             return false;
         }
     }
-    
-    public ArrayList<Flower> selectFlowerByProductId(int id)  {
-       ArrayList<Flower> flowers = new ArrayList<>();
+
+    public ArrayList<Flower> selectFlowerByProductId(int id) {
+        ArrayList<Flower> flowers = new ArrayList<>();
         try (Connection con = new ConnectionManager().getConnection()) {
             PreparedStatement ps = con.prepareStatement("select * from FLOWERS where FLOWERS.ID  in (select F_ID from  BOQUET_FLOWERS where BOQUET_FLOWERS.P_ID = ?)");
             ps.setInt(1, id);
@@ -120,7 +120,7 @@ public class FlowerDao {
             while (rs.next()) {
                 Flower flower = new Flower();
                 flower.setID(rs.getInt(1));
-                flower.setName(rs.getString(2));  
+                flower.setName(rs.getString(2));
                 flower.setCountry(rs.getString(3));
                 flower.setImage(fiDao.selectFlowerImagesByFlowerId(flower.getID()));
                 flowers.add(flower);

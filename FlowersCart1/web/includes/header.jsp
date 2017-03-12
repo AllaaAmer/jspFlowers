@@ -30,6 +30,9 @@
 
         <!-- Custom Theme Style -->
         <link href="../assets/css/custom.min.css" rel="stylesheet">
+
+        <!-- Custom Admin Style -->
+        <link href="../assets/css/adminCSS.css" rel="stylesheet">
     </head>
     <body class="nav-md">
         <div class="container body">
@@ -66,11 +69,11 @@
                                             <li><a href="index3.html">Remove Product</a></li>
                                         </ul>
                                     </li>
-                                    <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
+                                    <li><a><i class="fa fa-users"></i> Clients <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="form.html">View User</a></li>
-                                            <li><a href="ClientAddition.jsp">Add User</a></li>
-                                            <li><a href="form_validation.html">Remove User</a></li>
+                                            <!--<li><a href="form.html">View Client</a></li>-->
+                                            <li><a href="ClientAddition.jsp">Add Client</a></li>
+                                            <li><a href="/FlowersCart1/ListClientServlet">List Users</a></li>
                                         </ul>
                                     </li>
                                     <li><a><i class="fa fa-bars"></i>Category<span class="fa fa-chevron-down"></span></a>
@@ -202,4 +205,3 @@
                 </div>
                 <!-- /top navigation -->
 
-              

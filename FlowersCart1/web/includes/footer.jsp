@@ -48,5 +48,7 @@
 <!-- Custom Theme Scripts -->
 <script src="../assets/js/custom.min.js"></script>
 
+<!-- Custom Client side validation -->
+<script src="../assets/js/adminJS.js"></script>
 </body>
 </html>

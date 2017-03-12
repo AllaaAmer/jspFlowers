@@ -96,16 +96,17 @@ public class ClientDao {
             ps.setString(6, client.getAddress());
             ps.setInt(7, client.getCridetlimit());
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
-            ps.setDate(8, new java.sql.Date(date.getTime()));
+            java.sql.Date sqlStartDate = new java.sql.Date(date.getTime());
+            ps.setDate(8, sqlStartDate);
             ps.setString(9, client.getPhone());
             int num = ps.executeUpdate();
             if (num != 0) {
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (ParseException ex) {
-            Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return false;
     }
