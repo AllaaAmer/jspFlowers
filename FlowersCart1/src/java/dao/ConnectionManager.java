@@ -30,7 +30,7 @@ public class ConnectionManager {
         try {
             return DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jsp","jsp");
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return null;
     }
