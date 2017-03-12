@@ -19,6 +19,7 @@ public class FlowerDao {
     Flower oneFlower;
 
     ArrayList<Flower> flowertList;
+    FlowerImageDao fiDao = new FlowerImageDao();
 
     public boolean insertProduct(Flower flower) {
         try (Connection con = new ConnectionManager().getConnection()) {
@@ -63,6 +64,7 @@ public class FlowerDao {
                 flower.setID(rs.getInt(1));
                 flower.setName(rs.getString(2));
                 flower.setCountry(rs.getString(3));
+                flower.setImage(fiDao.selectFlowerImagesByFlowerId(flower.getID()));
                 flowertList.add(flower);
                 System.out.println(flower.toString());
             }
@@ -107,6 +109,27 @@ public class FlowerDao {
             ex.printStackTrace();
             return false;
         }
+    }
+    
+    public ArrayList<Flower> selectFlowerByProductId(int id)  {
+       ArrayList<Flower> flowers = new ArrayList<>();
+        try (Connection con = new ConnectionManager().getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from FLOWERS where FLOWERS.ID  in (select F_ID from  BOQUET_FLOWERS where BOQUET_FLOWERS.P_ID = ?)");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Flower flower = new Flower();
+                flower.setID(rs.getInt(1));
+                flower.setName(rs.getString(2));  
+                flower.setCountry(rs.getString(3));
+                flower.setImage(fiDao.selectFlowerImagesByFlowerId(flower.getID()));
+                flowers.add(flower);
+                System.out.println(flowers.toString());
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return flowers;
     }
 
 }

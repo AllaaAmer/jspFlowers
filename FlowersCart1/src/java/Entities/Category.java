@@ -5,7 +5,6 @@
  */
 package Entities;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
  * @author Adel Zaid
  */
 
-public class Category implements Serializable {
+public class Category  {
 
     private int id;
 

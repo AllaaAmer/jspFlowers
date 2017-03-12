@@ -14,11 +14,10 @@
                         <a href="#"><span class="icon-youtube"></span></a>
                         <a href="#"><span class="icon-tumblr"></span></a>
                     </div>
-                    <a href="index.jsp"> <span class="icon-home"></span> Home </a> 
-                    <a href="#"><span class="icon-user"></span> My Account</a> 
-                    <a href="contact.html"><span class="icon-envelope"></span> Contact us</a>
-
-                    <a href="cart.html"><span class="icon-shopping-cart"></span> 0 Item(s) - 
+                    <a href="index.jsp"><img src="assets/img/icons/homes.png" > Home </a> 
+                    <a href="#"><img src="assets/img/icons/boy.png" > My Account</a> 
+                    <a href="contact.html"><img src="assets/img/icons/mail.png" > Contact us</a>
+                    <a href="cart.html"><img src="assets/img/icons/cart.png" > 0 Item(s) - 
                         <span class="badge badge-warning"> $0.0</span></a>
                 </div>
             </div>
@@ -64,11 +63,11 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="index.jsp">Home	</a></li>
-                            <li class=""><a href="list-view.html">Flowers </a></li>
-                            <li class=""><a href="grid-view.html">Bouquets </a></li>
-                            <li class=""><a href="three-col.html">Categories</a></li>
-                            <li class=""><a href="four-col.html">Extras </a></li>
+                            <li ><a href="index.jsp"><img src="assets/img/icons/home.png" >&nbsp;Home	</a></li>
+                          <li class=""><a href="AllFlowers.jsp"><img src="assets/img/icons/rose.png" >&nbsp;Flowers </a></li>
+                                <li class=""><a href="AllBouquets.jsp"><img src="assets/img/icons/bouquet.png" >&nbsp;Bouquets </a></li>
+                                <li class=""><a href="AllCategories.jsp"><img src="assets/img/icons/cat.png" >&nbsp;Categories</a></li>
+                                <li class=""><a href="#"><img src="assets/img/icons/present.png" >&nbsp;Extras </a></li>
 
                         </ul>
                         <form action="#" class="navbar-search pull-left">
@@ -76,7 +75,7 @@
                         </form>
                         <ul class="nav pull-right">
                             <li >
-                                <a href="LogoutServlet"> <span class="icon-arrow-right" />  Log out </a>
+                                <a href="LogoutServlet"> <img src="assets/img/icons/exit.png" > Log out </a>
                             </li>
                         </ul>
                     </div>

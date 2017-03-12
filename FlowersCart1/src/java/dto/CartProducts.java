@@ -17,6 +17,10 @@ public class CartProducts {
     ///start sherif
     private LinkedList<Product> products;
 
+    public CartProducts() {
+        products=new LinkedList<>();
+    }
+
     public boolean addProduct(Product product) {
         return products.add(product);
     }
@@ -35,7 +39,7 @@ public class CartProducts {
 
     public void removeProduct(Product product) {
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getID() == product.getID()) {
+            if (products.get(i).getId()== product.getId()) {
                 products.remove(i);
                 break;
             }
@@ -44,7 +48,7 @@ public class CartProducts {
 
     public void removeProduct(int id) {
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getID() == id) {
+            if (products.get(i).getId()== id) {
                 products.remove(i);
                 break;
             }

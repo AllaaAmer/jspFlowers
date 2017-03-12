@@ -21,6 +21,8 @@ public class ProductDoa {
 
     Product oneProduct;
     ArrayList<Product> productList;
+    ProductImageDao iDao = new ProductImageDao();
+    FlowerDao fDao = new FlowerDao();
 
     public boolean insertProduct(Product product)  {
         try (Connection con = new ConnectionManager().getConnection()) {
@@ -48,12 +50,14 @@ public class ProductDoa {
 
             while (rs.next()) {
                 Product product = new Product();
-                product.setID(rs.getInt(1));
+                product.setId(rs.getInt(1));
                 product.setName(rs.getString(2));
                 product.setPrice(rs.getFloat(3));
                 product.setQuantity(rs.getInt(4));
                 product.setDescription(rs.getString(5));
                 product.setRating(rs.getInt(6));
+                product.setFlowers(fDao.selectFlowerByProductId(product.getId()));
+                product.setImages(iDao.selectProductImagesByProductId(product.getId()));
                 productList.add(product);
                 System.out.println(product.toString());
             }
@@ -75,12 +79,14 @@ public class ProductDoa {
 
             while (rs.next()) {
                 Product product = new Product();
-                product.setID(rs.getInt(1));
+                product.setId(rs.getInt(1));
                 product.setName(rs.getString(2));
                 product.setPrice(rs.getFloat(3));
                 product.setQuantity(rs.getInt(4));
                 product.setDescription(rs.getString(5));
                 product.setRating(rs.getInt(6));
+                product.setImages(iDao.selectProductImagesByProductId(product.getId()));
+                product.setFlowers(fDao.selectFlowerByProductId(product.getId()));
                 productList.add(product);
                 System.out.println(product.toString());
             }
@@ -101,7 +107,7 @@ public class ProductDoa {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
-                product.setID(rs.getInt(1));
+                product.setId(rs.getInt(1));
                 product.setName(rs.getString(2));
                 product.setPrice(rs.getFloat(3));
                 product.setQuantity(rs.getInt(4));
@@ -127,7 +133,7 @@ public class ProductDoa {
             ps.setInt(3, product.getQuantity());
             ps.setString(4, product.getDescription());
             ps.setInt(5, product.getRating());
-            ps.setInt(6, product.getID());
+            ps.setInt(6, product.getId());
             ps.executeUpdate();
 
             return true;
