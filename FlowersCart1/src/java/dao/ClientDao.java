@@ -30,13 +30,13 @@ public class ClientDao {
 //// Connection con=DriverManager.getConnection("jdbc:ora")
     public boolean deleteClientById(Client client) {
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
             PreparedStatement ps = con.prepareStatement("delete from client where id=?");
             ps.setInt(1, client.getId());
             int num = ps.executeUpdate();
             if (num != 0) {
-                flag= true;
+                flag = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,13 +52,14 @@ public class ClientDao {
 
     public boolean deleteClientByMail(Client client) {
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
             PreparedStatement ps = con.prepareStatement("delete from client where mail=?");
             ps.setString(1, client.getMail());
             int num = ps.executeUpdate();
             if (num != 0) {
-                flag= true;
+                flag = true;
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -74,7 +75,7 @@ public class ClientDao {
 
     public boolean updateClient(Client client) {
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
             PreparedStatement ps = con.prepareStatement("update client set fname=?,lname=?,mail=?,password=?"
                     + ",job=?,address=?,cridetlimit=?,birthday=?,phone=? where id=?");
@@ -91,7 +92,7 @@ public class ClientDao {
             ps.setInt(10, client.getId());
             int num = ps.executeUpdate();
             if (num != 0) {
-               flag= true;
+                flag = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -109,7 +110,7 @@ public class ClientDao {
 
     public boolean insertClient(Client client) {
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
 
             PreparedStatement ps = con.prepareStatement("insert into client(fname,lname,mail,password,job,address,"
@@ -126,7 +127,7 @@ public class ClientDao {
             ps.setString(9, client.getPhone());
             int num = ps.executeUpdate();
             if (num != 0) {
-                flag= true;
+                flag = true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -164,7 +165,7 @@ public class ClientDao {
                 client.setId(rs.getInt("id"));
                 clients.add(client);
             }
-           
+
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -179,16 +180,16 @@ public class ClientDao {
 
     public boolean validclient(Client client) {
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
             PreparedStatement ps = con.prepareStatement("select * from client where mail=? and password=?");
             ps.setString(1, client.getMail());
             ps.setString(2, client.getPassword());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                flag= true;
+                flag = true;
             }
-        
+
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -204,15 +205,15 @@ public class ClientDao {
     public boolean existMail(Client client) {
 
         Connection con = new ConnectionManager().getConnection();
-        boolean flag=false;
+        boolean flag = false;
         try {
             PreparedStatement ps = con.prepareStatement("select * from client where mail=? ");
             ps.setString(1, client.getMail());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                flag=true;
+                flag = true;
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -233,7 +234,7 @@ public class ClientDao {
             ps.setInt(1, client.getId());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                 clientById = new Client();
+                clientById = new Client();
                 clientById.setFname(rs.getString("fname"));
                 clientById.setLname(rs.getString("lname"));
                 clientById.setPassword(rs.getString("password"));
@@ -244,7 +245,7 @@ public class ClientDao {
                 clientById.setCridetlimit(rs.getInt("cridetlimit"));
                 clientById.setBirthday(rs.getDate("birthday").toString());
                 clientById.setId(rs.getInt("id"));
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);

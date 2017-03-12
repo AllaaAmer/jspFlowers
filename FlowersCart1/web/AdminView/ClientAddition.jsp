@@ -1,5 +1,3 @@
-
-<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
 <jsp:include page="../includes/header.jsp" />
 
 
@@ -13,7 +11,7 @@
             <div class="col-md-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Add Flower <small>Enter your flower details</small></h2>
+                        <h2>Add New Client <small>Enter Client details</small></h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -22,11 +20,11 @@
                     </div>
                     <div class="x_panel">
                         <br />
-                        <form class="form-horizontal form-label-left input_mask" method="post" action="${pageContext.request.contextPath}/AddProductServlet">
+                        <form class="form-horizontal form-label-left input_mask" method="post" action="${pageContext.request.contextPath}/AddClientServlet">
 
                             <div class="col-md-10 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-left" name="name" placeholder="Flower Name" required="true">
-                                <span class="fa fa-gift form-control-feedback left" aria-hidden="true"></span>
+                                <input type="text" class="form-control has-feedback-left" name="fname" placeholder="First Name" required="true">
+                                <span class="fa fa-usd form-control-feedback left" aria-hidden="true"></span>
                             </div>
                             <div class="col-md-3 col-sm-12 col-xs-12 form-group has-feedback">
                                 <input type="number" class="form-control" name="price" placeholder="Price" required="true">
@@ -69,5 +67,4 @@
     </div>
 </div>
 <!-- /page content -->
-
 <jsp:include page="../includes/footer.jsp" />
