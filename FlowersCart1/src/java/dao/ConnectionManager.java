@@ -34,20 +34,12 @@ private DataSource dataSource;
     }
     public Connection getConnection()
     {
-<<<<<<< HEAD
-        try {
-            return DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","jsp","jsp");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return null;
-=======
     try { 
       return dataSource.getConnection();
     } catch (SQLException ex) {
         Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
     }
     return null;
->>>>>>> 6b39b212ad776002df1a2b8d5f20778b7c5fd504
+
     }
 }
