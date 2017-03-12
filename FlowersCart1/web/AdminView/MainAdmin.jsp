@@ -64,8 +64,8 @@
                   <li><a><i class="fa fa-thumbs-o-up"></i> Products <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="ProductAddition.jsp">Add Product</a></li>
-                      <li><a href="index2.html">Edit Product</a></li>
-                      <li><a href="index3.html">Remove Product</a></li>
+                      <li><a href="ProductDetails.jsp">Edit Product</a></li>
+                      <li><a href="ProductDetails.jsp">Remove Product</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
