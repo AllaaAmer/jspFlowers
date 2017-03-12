@@ -20,13 +20,14 @@ import java.util.logging.Logger;
  * @author Sheko
  */
 public class CategoryDao {
-    
+
     ProductDoa pDao = new ProductDoa();
 
     public List<Category> selectAll() {
         List<Category> categorys = new LinkedList<Category>();
         Category category;
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try {
             PreparedStatement ps = con.prepareStatement("select * from category");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -34,19 +35,25 @@ public class CategoryDao {
                 category.setId(rs.getInt("id"));
                 category.setName(rs.getString("name"));
                 category.setProductList(pDao.selectProductsByCategory(category.getId()));
-                
                 categorys.add(category);
             }
-            return categorys;
+            
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return null;
+        return categorys;
     }
 
     public Category selectById(Category category) {
         Category categoryById = null;
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try {
             PreparedStatement ps = con.prepareStatement("select * from category where id=?");
             ps.setInt(1, category.getId());
             ResultSet rs = ps.executeQuery();
@@ -55,66 +62,105 @@ public class CategoryDao {
                 categoryById.setId(rs.getInt("id"));
                 categoryById.setName(rs.getString("name"));
             }
-            return categoryById;
+            
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return null;
+       return categoryById;
     }
 
     public boolean insertCategory(Category category) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try {
             PreparedStatement ps = con.prepareStatement("insert into category(name) values(?)");
             ps.setString(1, category.getName());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+                flag= true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return false;
+        return flag;
     }
 
     public boolean updateCategory(Category category) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try {
             PreparedStatement ps = con.prepareStatement("update category set name=? where id=?");
             ps.setString(1, category.getName());
             ps.setInt(2, category.getId());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+               flag= true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return false;
+        return flag;
     }
 
     public boolean deleteCategoryByName(Category category) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try {
             PreparedStatement ps = con.prepareStatement("delete from category where name=?");
             ps.setString(1, category.getName());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+                flag= true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return false;
+        return flag;
     }
+
     public boolean deleteCategoryById(Category category) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try {
             PreparedStatement ps = con.prepareStatement("delete from category where id=?");
             ps.setInt(1, category.getId());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+                flag= true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        return false;
+        return flag;
     }
 }

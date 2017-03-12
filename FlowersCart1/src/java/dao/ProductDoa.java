@@ -10,6 +10,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
 import Entities.Product;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oracle.jdbc.OracleDriver;
 //import oracle.sql.DATE;
 
@@ -25,7 +27,9 @@ public class ProductDoa {
     FlowerDao fDao = new FlowerDao();
 
     public boolean insertProduct(Product product)  {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try  {
             PreparedStatement ps = con.prepareStatement("INSERT INTO PRODUCT (NAME, PRICE, QUANTITY, DESCRIPTION, RATING) VALUES (?, ?, ?, ?, ?)");
             ps.setString(1, product.getName());
             ps.setFloat(2, product.getPrice());
@@ -34,17 +38,26 @@ public class ProductDoa {
             ps.setInt(5, product.getRating());
             ps.executeUpdate();
 
-            return true;
+            flag= true;
         } catch (SQLException ex) {
             ex.printStackTrace();
 
-            return false;
         }
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
     }
 
     public ArrayList<Product> selectAllProducts() {
         productList = new ArrayList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("select * from PRODUCT");
             ResultSet rs = ps.executeQuery();
 
@@ -66,13 +79,22 @@ public class ProductDoa {
             ex.printStackTrace();
 
         }
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         return productList;
     }
 
     public ArrayList<Product> selectProductsByCategory(int id)  {
         productList = new ArrayList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("select * from PRODUCT where PRODUCT.id  in (select product_id from  cat_pro where cat_pro.category_id = ?)");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -95,12 +117,21 @@ public class ProductDoa {
             ex.printStackTrace();
 
         }
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         return productList;
     }
 
     public Product selectOneProduct(int id) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try  {
 
             PreparedStatement ps = con.prepareStatement("select * from PRODUCT where id = ?");
             ps.setInt(1, id);
@@ -121,12 +152,22 @@ public class ProductDoa {
             ex.printStackTrace();
 
         }
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         return oneProduct;
     }
 
     public boolean updateProduct(Product product)  {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try  {
             PreparedStatement ps = con.prepareStatement("update PRODUCT set (NAME, PRICE, QUANTITY, DESCRIPTION, RATING) VALUES (?, ?, ?, ?, ?) where id = ?");
             ps.setString(1, product.getName());
             ps.setFloat(2, product.getPrice());
@@ -136,27 +177,45 @@ public class ProductDoa {
             ps.setInt(6, product.getId());
             ps.executeUpdate();
 
-            return true;
+            flag= true;
         } catch (SQLException ex) {
             ex.printStackTrace();
 
-            return false;
         }
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return  flag;
     }
 
     public boolean deleteProduct(int id)  {
-        try (Connection con = new ConnectionManager().getConnection()) {
+       Connection con = new ConnectionManager().getConnection();
+       boolean flag=false;
+        try  {
             PreparedStatement ps = con.prepareStatement("DELETE FROM PRODUCT WHERE  id = ?");
             ps.setInt(1, id);
 
             ps.executeUpdate();
 
-            return true;
+            flag= true;
         } catch (SQLException ex) {
             ex.printStackTrace();
 
-            return false;
         }
+        finally
+        {
+           try {
+               con.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(ProductDoa.class.getName()).log(Level.SEVERE, null, ex);
+           }
+        }
+        return flag;
     }
 
 }
