@@ -25,7 +25,7 @@ public class Client implements Serializable {
 
     private String password;
 
-    private String  birthday;
+    private String birthday;
 
     private String job;
 
@@ -34,7 +34,6 @@ public class Client implements Serializable {
     private int cridetlimit;
 
     private String address;
-
 
     public int getId() {
         return id;
@@ -84,7 +83,6 @@ public class Client implements Serializable {
         this.birthday = birthday;
     }
 
-
     public String getJob() {
         return job;
     }
@@ -116,6 +114,5 @@ public class Client implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-
 
 }

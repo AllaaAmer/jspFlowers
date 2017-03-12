@@ -28,36 +28,34 @@ public class ClientDao {
 //private Connection getConnection()
 //{
 //// Connection con=DriverManager.getConnection("jdbc:ora")
-    public boolean deleteClientById(Client client)
-    {
+    public boolean deleteClientById(Client client) {
         try (Connection con = new ConnectionManager().getConnection()) {
-             PreparedStatement ps=con.prepareStatement("delete from client where id=?");
-             ps.setInt(1,client.getId());
-             int num=ps.executeUpdate();
-             if(num!=0)
-             {
-                 return true;
-             }
+            PreparedStatement ps = con.prepareStatement("delete from client where id=?");
+            ps.setInt(1, client.getId());
+            int num = ps.executeUpdate();
+            if (num != 0) {
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-    public boolean deleteClientByMail(Client client)
-    {
+
+    public boolean deleteClientByMail(Client client) {
         try (Connection con = new ConnectionManager().getConnection()) {
-             PreparedStatement ps=con.prepareStatement("delete from client where mail=?");
-             ps.setString(1,client.getMail());
-             int num=ps.executeUpdate();
-             if(num!=0)
-             {
-                 return true;
-             }
+            PreparedStatement ps = con.prepareStatement("delete from client where mail=?");
+            ps.setString(1, client.getMail());
+            int num = ps.executeUpdate();
+            if (num != 0) {
+                return true;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ClientDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
+
     public boolean updateClient(Client client) {
         try (Connection con = new ConnectionManager().getConnection()) {
             PreparedStatement ps = con.prepareStatement("update client set fname=?,lname=?,mail=?,password=?"
@@ -69,7 +67,7 @@ public class ClientDao {
             ps.setString(5, client.getJob());
             ps.setString(6, client.getAddress());
             ps.setInt(7, client.getCridetlimit());
-            Date date=new  SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
             ps.setDate(8, new java.sql.Date(date.getTime()));
             ps.setString(9, client.getPhone());
             ps.setInt(10, client.getId());
@@ -97,7 +95,7 @@ public class ClientDao {
             ps.setString(5, client.getJob());
             ps.setString(6, client.getAddress());
             ps.setInt(7, client.getCridetlimit());
-            Date date=new  SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(client.getBirthday());
             ps.setDate(8, new java.sql.Date(date.getTime()));
             ps.setString(9, client.getPhone());
             int num = ps.executeUpdate();
@@ -111,6 +109,7 @@ public class ClientDao {
         }
         return false;
     }
+
     public List<Client> selectAll() {
 
         List<Client> clients = new LinkedList<Client>();
