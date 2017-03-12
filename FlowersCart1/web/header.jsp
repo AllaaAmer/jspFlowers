@@ -154,7 +154,7 @@
                                 <li class=""><a href="grid-view.html">Bouquets </a></li>
                                 <li class=""><a href="three-col.html">Categories</a></li>
                                 <li class=""><a href="four-col.html">Extras </a></li>
-                              
+
                             </ul>
                             <form action="#" class="navbar-search pull-left">
                                 <input type="text" placeholder="Search" class="search-query span2">
