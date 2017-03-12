@@ -1,5 +1,7 @@
 package Entities;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,21 +13,40 @@ package Entities;
  */
 public class Product {
 
-    private int ID;
+    private int id;
     private String name;
     private float price;
     private int quantity;
     private String description;
     private int rating;
+    
+    private ArrayList<ImageEntity> images;
+    private ArrayList<Flower> flowers ;
 
-    public int getID() {
-        return ID;
+
+    public ArrayList<Flower> getFlowers() {
+        return flowers;
+    }
+    public int getId() {
+        return id;
+
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setFlowers(ArrayList<Flower> flowers) {
+        this.flowers = flowers;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
+    public ArrayList<ImageEntity> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<ImageEntity> images) {
+        this.images = images;
+    }  
+    
     public String getName() {
         return name;
     }
