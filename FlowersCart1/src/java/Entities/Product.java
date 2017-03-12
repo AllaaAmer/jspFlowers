@@ -23,12 +23,20 @@ public class Product {
     private ArrayList<ImageEntity> images;
     private ArrayList<Flower> flowers ;
 
+
     public ArrayList<Flower> getFlowers() {
         return flowers;
+    }
+    public int getId() {
+        return id;
+
     }
 
     public void setFlowers(ArrayList<Flower> flowers) {
         this.flowers = flowers;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public ArrayList<ImageEntity> getImages() {
@@ -37,16 +45,7 @@ public class Product {
 
     public void setImages(ArrayList<ImageEntity> images) {
         this.images = images;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    }  
     
     public String getName() {
         return name;

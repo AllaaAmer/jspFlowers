@@ -56,8 +56,8 @@ public class ProductDoa {
                 product.setQuantity(rs.getInt(4));
                 product.setDescription(rs.getString(5));
                 product.setRating(rs.getInt(6));
-                product.setFlowers(fDao.selectFlowerByProductId(product.getID()));
-                product.setImages(iDao.selectProductImagesByProductId(product.getID()));
+                product.setFlowers(fDao.selectFlowerByProductId(product.getId()));
+                product.setImages(iDao.selectProductImagesByProductId(product.getId()));
                 productList.add(product);
                 System.out.println(product.toString());
             }
@@ -85,8 +85,8 @@ public class ProductDoa {
                 product.setQuantity(rs.getInt(4));
                 product.setDescription(rs.getString(5));
                 product.setRating(rs.getInt(6));
-                product.setImages(iDao.selectProductImagesByProductId(product.getID()));
-                product.setFlowers(fDao.selectFlowerByProductId(product.getID()));
+                product.setImages(iDao.selectProductImagesByProductId(product.getId()));
+                product.setFlowers(fDao.selectFlowerByProductId(product.getId()));
                 productList.add(product);
                 System.out.println(product.toString());
             }
