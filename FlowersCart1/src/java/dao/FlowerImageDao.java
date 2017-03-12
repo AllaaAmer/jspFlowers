@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +24,9 @@ public class FlowerImageDao {
     //************************* start allaa *********************
     public ImageEntity selectFlowerImagesByFlowerId(int id) {
         ImageEntity flowerImage = new ImageEntity();
-        try (Connection con = new ConnectionManager().getConnection()) {
+
+        Connection con = new ConnectionManager().getConnection();
+        try {
             PreparedStatement ps = con.prepareStatement("select * from FLOWER_IMAGES where FLOWER_IMAGES.FLOWERID  in (select ID from  FLOWERS where FLOWERS.ID = ?)");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -35,6 +39,12 @@ public class FlowerImageDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
 
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FlowerImageDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return flowerImage;
