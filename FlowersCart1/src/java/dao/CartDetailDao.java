@@ -24,7 +24,8 @@ public class CartDetailDao {
 
     public List<CartDetails> selectAll() {
         LinkedList<CartDetails> cartDetailses = new LinkedList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("select * from cart_details");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -34,16 +35,25 @@ public class CartDetailDao {
                 cartDetails.setQuantity(rs.getInt("QUANTITY"));
                 cartDetailses.add(cartDetails);
             }
-            return cartDetailses;
+         
         } catch (SQLException ex) {
             Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+           return cartDetailses;
     }
 
     public List<CartProductDetails> selectCartProductsDetailById(CartDetails cartDetails) {
         LinkedList<CartProductDetails> details = new LinkedList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("select * from cart_details where CART_ID=?");
             ps.setInt(1, cartDetails.getCartId());
             ResultSet rs = ps.executeQuery();
@@ -53,16 +63,26 @@ public class CartDetailDao {
                 cartProductDetails.setProductId(rs.getInt("QUANTITY"));
                 details.add(cartProductDetails);
             }
-            return details;
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+         finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return details;
     }
 
     public boolean insertCartDetail(CartDetails cartDetails) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try  {
             PreparedStatement ps = con.prepareStatement("insert into cart_details(CART_ID,PRODUCT_ID,QUANTITY)"
                     + "values(?,?,?)");
             ps.setInt(1, cartDetails.getCartId());
@@ -70,31 +90,51 @@ public class CartDetailDao {
             ps.setInt(3, cartDetails.getQuantity());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+                flag= true;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false;
+         finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
     }
 
     public boolean deleteByCartId(CartDetails cartDetails) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag=false;
+        try  {
 
             PreparedStatement ps = con.prepareStatement("delete from cart_details where CART_ID=?");
             ps.setInt(1, cartDetails.getCartId());
             int num = ps.executeUpdate();
             if (num != 0) {
-                return true;
+                flag= true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CartDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+           finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
     }
 
     public boolean updateCartDetails(CartDetails cartDetails) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+      Connection con = new ConnectionManager().getConnection();
+      boolean flag=false;
+        try  {
             PreparedStatement ps=con.prepareStatement("update cart_details set quantity=? where cart_id=? and PRODUCT_ID=?");
             ps.setInt(1, cartDetails.getQuantity());
             ps.setInt(2, cartDetails.getCartId());
@@ -102,11 +142,19 @@ public class CartDetailDao {
             int num=ps.executeUpdate();
             if(num!=0)
             {
-                return  true;
+               flag=true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+                   finally
+        {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CartDetailDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return flag;
     }
 }

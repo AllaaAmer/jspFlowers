@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,7 +27,8 @@ public class ProductImageDao {
     
     public ArrayList<ImageEntity> selectProductImagesByProductId(int id)  {
        ArrayList<ImageEntity> productImagesList = new ArrayList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+       Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("select * from PRODUCT_IMAGES where PRODUCT_IMAGES.PRODUCTSID  in (select ID from  PRODUCT where PRODUCT.ID = ?)");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -40,6 +43,14 @@ public class ProductImageDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
 
+        }
+        finally
+        {
+           try {
+               con.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(ProductImageDao.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
 
         return productImagesList;

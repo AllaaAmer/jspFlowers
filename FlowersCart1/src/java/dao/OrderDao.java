@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import Entities.Order;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oracle.jdbc.OracleDriver;
 
 /**
@@ -21,7 +23,8 @@ public class OrderDao {
 
     public ArrayList<Order> selectOrdersByClientID(int id) {
         OrderList = new ArrayList<>();
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        try {
             PreparedStatement ps = con.prepareStatement("select * from orders where CLIENT_ID = ?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -37,21 +40,36 @@ public class OrderDao {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return OrderList;
     }
 
     public boolean insertOrder(Order order) {
-        try (Connection con = new ConnectionManager().getConnection()) {
+        Connection con = new ConnectionManager().getConnection();
+        boolean flag = false;
+        try {
             PreparedStatement ps = con.prepareStatement("INSERT INTO ORDERS (CLIENT_ID, DATEORDERED, PRICE) VALUES (?,?,?)");
             ps.setInt(1, order.getClientId());
             ps.setTimestamp(2, order.getStamp());
             ps.setFloat(3, order.getPrice());
             ResultSet rs = ps.executeQuery();
-            return true;
+            flag = true;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return false;
+
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        return flag;
     }
 }

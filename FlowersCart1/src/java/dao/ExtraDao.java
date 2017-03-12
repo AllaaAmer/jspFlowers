@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Entities.Extra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import oracle.jdbc.OracleDriver;
 
@@ -21,18 +23,25 @@ public class ExtraDao {
     ArrayList<Extra> extratList;
 
     public boolean insertExtra(Extra extra)  {
-        try (Connection con = new ConnectionManager().getConnection()) {
+       Connection con = new ConnectionManager().getConnection();
+        try  {
             PreparedStatement ps = con.prepareStatement("INSERT INTO EXTRAS (NAME, PRICE, QUANTITY) VALUES (?,?,?)");
             ps.setString(1, extra.getName());
             ps.setFloat(2, extra.getPrice());
             ps.setInt(3, extra.getQuantity());
-            ps.executeUpdate();
-            con.close();
-            return true;
+            int count = ps.executeUpdate();
+            if(count!=0)
+                return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ExtraDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+         return false;
     }
 
     public boolean updateExtra(Extra extra)  {
@@ -42,14 +51,19 @@ public class ExtraDao {
             ps.setFloat(2, extra.getPrice());
             ps.setInt(3, extra.getQuantity());
             ps.setInt(4, extra.getID());
-            ps.executeUpdate();
-            con.close();
-            return true;
+           int count = ps.executeUpdate();
+            if(count!=0)
+                return true;
         } catch (SQLException ex) {
-            ex.printStackTrace();
-          
-            return false;
+            ex.printStackTrace(); 
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ExtraDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+         return false;
     }
 
     public ArrayList<Extra> selectAllExtras() {
@@ -69,8 +83,7 @@ public class ExtraDao {
             }
             con.close();
         } catch (SQLException ex) {
-            ex.printStackTrace();
-           
+            ex.printStackTrace();  
         }
 
         return extratList;
